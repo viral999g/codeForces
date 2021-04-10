@@ -7,4 +7,4 @@
 3. Run `npm install` or `npm i`
 
 ## Run
-1. Run `npm start` to start the server
+Run `npm start` to start the server
