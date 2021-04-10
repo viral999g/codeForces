@@ -4,4 +4,7 @@
 ## Installation
 1. Clone the repo
 2. Open folder in the terminal
-3. Run **npm install** or **npm i**
+3. Run `npm install` or `npm i`
+
+## Run
+1. Run `npm start` to start the server
