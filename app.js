@@ -12,7 +12,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get('/', (req, res, next) => {
-    res.sendFile(path.join(__dirname, './views/index.html'))
+    // res.sendFile(path.join(__dirname, './views/index.html'))
+    res.send("Hello Coder!")
 })
+
+// app.get('/login', (req, res, next) => {
+//     res.sendFile(path.join(__dirname, './views/login.html'))
+// })
 
 mongoConnect(() => app.listen(process.env.PORT || PORT, () => console.log('Server Started!')))
