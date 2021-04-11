@@ -15,4 +15,4 @@ app.get('/', (req, res, next) => {
     res.sendFile(path.join(__dirname, './views/index.html'))
 })
 
-mongoConnect(() => app.listen(process.env.PORT || PORT, () => console.log('Server Started!!')))
+mongoConnect(() => app.listen(process.env.PORT || PORT, () => console.log('Server Started!')))
