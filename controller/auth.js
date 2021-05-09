@@ -6,8 +6,6 @@ const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 
 exports.postRegister = async(req, res, next) => {
-    console.log(req.body)
-
     var firstName = req.body.firstName
     var lastName = req.body.lastName
     var handle = req.body.cf_handle
@@ -35,24 +33,23 @@ exports.postRegister = async(req, res, next) => {
         ]
     }).then(auth => {
         if (auth) {
-            return res.send("User already exist.")
+            return res.send({ statusCode: 200, message: "User already exist!" })
         } else {
             return bcrypt
                 .hash(password, 12)
                 .then(hashedPasswd => {
-                    return authModel({
+                    return new authModel({
                         handle: handle,
                         email: email,
                         password: hashedPasswd,
                         firstName: firstName,
                         lastName: lastName,
                         verified: false
-                    }).save().then(res => res)
-                })
-                .then(r => {
-                    sendRegEmail(r)
-                    regUser(r)
-                    res.redirect('/login')
+                    }).save().then(r => {
+                        res.send({ statusCode: 200, message: "Successfully Registered" })
+                        sendRegEmail(r)
+                        regUser(r)
+                    })
                 })
         }
 
@@ -62,7 +59,6 @@ exports.postRegister = async(req, res, next) => {
 
 const sendRegEmail = async(user) => {
     // create reusable transporter object using the default SMTP transport
-    console.log(user)
     let transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 465,
@@ -73,7 +69,6 @@ const sendRegEmail = async(user) => {
         },
     });
 
-    console.log(user)
 
     let info = await transporter.sendMail({
         from: '"Codeforces 👻" <codeforces@example.com>', // sender address
@@ -86,8 +81,8 @@ const sendRegEmail = async(user) => {
 
 const regUser = async(user) => {
     var handle = user.handle
-    var insertUser = dbUpdater.getUserInfo(handle)
-    var insertSubmissions = dbUpdater.getSubmissions(handle)
+    var insertUser = await dbUpdater.getUserInfo(handle)
+        // var insertSubmissions = dbUpdater.getSubmissions(handle)
 }
 
 exports.regUser = regUser;

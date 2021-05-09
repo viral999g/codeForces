@@ -222,8 +222,14 @@ const registerCF = async() => {
         })
     })
 
-    var text = await res.text()
-    alert(text)
+    var json = await res.json()
+    if (json.statusCode == 200) {
+        if (json.message == "Successfully Registered") {
+            window.location.replace("/login")
+        } else {
+            alert(json.message)
+        }
+    }
 }
 
 var regBtn = document.getElementById('sign_up')

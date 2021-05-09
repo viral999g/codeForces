@@ -9,7 +9,7 @@ router.get('/register', (req, res, next) => {
 })
 
 router.get('/login', (req, res, next) => {
-    res.send('Login')
+    res.render('Login')
 })
 
 router.post('/register', authController.postRegister)

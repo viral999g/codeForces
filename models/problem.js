@@ -12,7 +12,6 @@ const problemSchema = new Schema({
     },
     name: {
         type: String,
-        required: true
     },
     tags: Array,
     rating: String,

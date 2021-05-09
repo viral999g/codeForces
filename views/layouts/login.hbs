@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style_login.css">
+    <!-- <script src="js/login.js"></script> -->
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@1,500&family=Newsreader:ital,wght@1,300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="cont_principal">
+        <div class="title_sans">
+            <h1>CodeForces</h1>
+            <h3>Welcome Coders!</h3>
+        </div>
+
+        <div class="cont_centrar">
+            <div class="cont_login">
+                <form onsubmit="">
+                    <div class="cont_tabs_login">
+                        <ul class='ul_tabs'>
+                            <li class="active"><a href="#">SIGN IN</a>
+                                <span class="linea_bajo_nom"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="cont_text_inputs">
+
+                        <input id="email" type="email" class="input_form_sign d_block active_inp  " placeholder="EMAIL" name="pass_us" />
+                        <span id="email_err"></span>
+                        <input id="password" type="password" class="input_form_sign d_block active_inp" min="3" max="12" placeholder="PASSWORD" name="pass_us" />
+                        <span id="cpass_err"></span>
+                        <a href="/codeforces-ui/register.html" class="link_forgot_pass d_block reg">Register Now!</a>
+                        <a href="/codeforces-ui/forgot.html" class="link_forgot_pass d_block ">Forgot Password?</a>
+                    </div>
+                    <div class="cont_btn">
+                        <button id="sign_in" type="submit" class="btn_sign" name="reset">SIGN IN</button>
+
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>

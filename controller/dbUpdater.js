@@ -35,7 +35,7 @@ const getUserInfo = async(handle) => {
                         })
                         .save()
                         .then(r => {
-                            console.log(r);
+                            getSubmissions(handle)
                             return true
                         })
                         .catch(e => {
@@ -58,67 +58,72 @@ const getUserInfo = async(handle) => {
 
 const getSubmissions = async(handle) => {
     var sub_counts = 1
-    const user = await userModel.findOne({ handle: handle })
-        .then(userDoc => { return userDoc })
-
-
-
-    while (true) {
-        const api = await fetch(`${constants.CF_BASE_URL}/user.status?handle=${handle}&from=${sub_counts}&count=1000`)
-        const res = await api.json()
-        if (res.status = 'OK') {
-            if (res.result.length > 0) {
-                var data = res.result
-                data.forEach(element => {
-                    var v = element.verdict.toString()
-                    if (v != "OK") {
-                        return
-                    }
-                    var sub_id = element.id.toString()
-                    subModel
-                        .findOne({ id: sub_id })
-                        .then(subDoc => {
-                            if (subDoc) {
-                                addProblem(subDoc)
+    console.log(handle)
+    userModel
+        .findOne({ handle: handle })
+        .then(userDoc => {
+            console.log(userDoc)
+        })
+    userModel.findOne({ handle: handle })
+        .then(async userDoc => {
+            while (true) {
+                const api = await fetch(`${constants.CF_BASE_URL}/user.status?handle=${handle}&from=${sub_counts}&count=1000`)
+                const res = await api.json()
+                if (res.status = 'OK') {
+                    if (res.result.length > 0) {
+                        var data = res.result
+                        data.forEach(element => {
+                            var v = element.verdict.toString()
+                            if (v != "OK") {
                                 return
                             }
+                            console.log(userDoc)
+                            var sub_id = element.id.toString()
+                            subModel
+                                .findOne({ id: sub_id })
+                                .then(subDoc => {
+                                    if (subDoc) {
+                                        addProblem(subDoc)
+                                        return
+                                    }
 
-                            var s = new subModel({
-                                    id: sub_id,
-                                    user: user._id,
-                                    problem: element.problem,
-                                    contestId: element.contestId,
-                                    programmingLanguage: element.programmingLanguage,
-                                    verdict: element.verdict,
-                                    passedTestCount: element.passedTestCount,
-                                    timeConsumedMillis: element.timeConsumedMillis,
-                                    memoryConsumedBytes: element.memoryConsumedBytes
-                                })
-                                .save()
-                                .then(r => {
-                                    addProblem(r);
-                                    return true
+                                    new subModel({
+                                            id: sub_id,
+                                            user: userDoc._id,
+                                            problem: element.problem,
+                                            contestId: element.contestId,
+                                            programmingLanguage: element.programmingLanguage,
+                                            verdict: element.verdict,
+                                            passedTestCount: element.passedTestCount,
+                                            timeConsumedMillis: element.timeConsumedMillis,
+                                            memoryConsumedBytes: element.memoryConsumedBytes
+                                        })
+                                        .save()
+                                        .then(r => {
+                                            return addProblem(r);
+
+                                        })
+                                        .catch(e => {
+                                            console.log(e);
+                                            return false
+                                        })
                                 })
                                 .catch(e => {
-                                    console.log(e);
-                                    return false
+                                    console.log(e)
                                 })
-                        })
-                        .catch(e => {
-                            console.log(e)
-                        })
-                });
-                sub_counts += 1000
-            } else {
-                console.log('No further data found')
-                break
-            }
-        } else if (res.status = 'FAILED') {
-            console.log('User not found')
-        }
+                        });
+                        sub_counts += 1000
+                    } else {
+                        console.log('No further data found')
+                        break
+                    }
+                } else if (res.status = 'FAILED') {
+                    console.log('User not found')
+                }
 
-        sub_counts += 1000
-    }
+                sub_counts += 1000
+            }
+        })
 }
 
 const addTags = async(prob) => {
@@ -202,7 +207,41 @@ const addProblem = async(sub) => {
                     })
                     .save()
                     .then(r => {
-                        return addTags(r)
+                        var tags = r.tags
+                        var tagResults = tags.map(tag => {
+                            return tagModel
+                                .findOne({ name: tag })
+                                .then(doc => {
+                                    if (doc) {
+                                        const probIndex = doc.problems.findIndex(p => {
+                                            return p.toString() === r._id.toString();
+                                        });
+                                        if (probIndex >= 0) {
+                                            return
+                                        } else {
+                                            doc.problems.push(r._id)
+                                            return doc.save()
+                                        }
+                                    } else {
+                                        return new tagModel({
+                                                name: tag,
+                                                problems: [r._id]
+                                            })
+                                            .save()
+                                            .then(r => {})
+                                            .catch(e => {
+                                                console.log(e);
+                                            })
+                                    }
+
+                                })
+                                .catch(e => {
+                                    console.log(e)
+                                })
+                        });
+                        return Promise.all(tagResults).then(r => {
+                            return r
+                        })
                     })
                     .catch(e => {
                         console.log(e);

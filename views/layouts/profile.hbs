@@ -78,9 +78,10 @@
                 <thead>
                     <tr>
                         <th>PROBLEM</th>
-                        <th>Language</th>
-                        <th>Time</th>
-                        <th>Memory</th>
+                        <th>LANGUAGE</th>
+                        <th>TIME</th>
+                        <th>MEMORY</th>
+                        <th>SOLUTION</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -90,6 +91,7 @@
                         <td>{{this.programmingLanguage}}</td>
                         <td>{{this.timeConsumedMillis}} ms</td>
                         <td>{{this.memoryConsumedBytes}} KB</td>
+                        <td><a target="_blank" href="https://codeforces.com/contest/{{this.contestId}}/submission/{{this.id}}">Link</a></td>
                     </tr>
                     {{/each}}
                     
