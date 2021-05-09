@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.foundation.min.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="nav-logo">Hello Coders!!</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Problem set</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Users</a>
+                </li>
+            </ul>
+            <div class="menulines">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+    <div id="profile-container">
+        <div id="profile-info">
+            <div id="profile-imagecard">
+                <img src="{{userInfo.profileImg}}">
+                <div>
+                    <h3>{{userInfo.firstName}} {{userInfo.lastName}}</h3>
+                    <span>Rank: {{userInfo.rank}}</span><br>
+                    <span>Rating: {{userInfo.maxRatings}}</span>
+                    <div class="profile-edit-btn-container">
+
+                        <a class="profile-edit-btn" href="#open-modal">Edit Profile</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="profile-infocard">
+                <div>
+                    <b>Full Name</b>
+                    <span>{{userInfo.firstName}} {{userInfo.lastName}}</span>
+                </div>
+                <div>
+                    <b>CodeForces Handle</b>
+                    <span>{{userInfo.handle}}</span>
+                </div>
+                <div>
+                    <b>City</b>
+                    <span>{{userInfo.city}}</span>
+                </div>
+                <div>
+                    <b>Country</b>
+                    <span>{{userInfo.country}}</span>
+                </div>
+                <div>
+                    <b>Submissions</b>
+                    <span>{{userInfo.subCounts}}</span>
+                </div>
+            </div>
+        </div>
+        <div id="table-div">
+            <table id="styled-table" class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>PROBLEM</th>
+                        <th>Language</th>
+                        <th>Time</th>
+                        <th>Memory</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each submissions}}
+                    <tr>
+                        <td><a target="_blank" href="https://codeforces.com/contest/{{this.problem.contestId}}/problem/{{this.problem.index}}">{{this.problem.name}}</a></td>
+                        <td>{{this.programmingLanguage}}</td>
+                        <td>{{this.timeConsumedMillis}} ms</td>
+                        <td>{{this.memoryConsumedBytes}} KB</td>
+                    </tr>
+                    {{/each}}
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--MODAL-->
+    <div id="open-modal">
+        <div id="profile-edit-form">
+            <input type="text" placeholder="{{userInfo.firstName}}" id="profile-edit-fname">
+            <input type="text" placeholder="{{userInfo.lastName}}" id="profile-edit-lname">
+            <input type="text" placeholder="{{userInfo.city}}" id="profile-edit-city">
+            <input type="text" placeholder="{{userInfo.country}}" id="profile-edit-country">
+            <div id="profile-edit-buttons">
+                <input type="submit" value="Save" id="profile-edit-submit">
+                <a href="#" title="Close" class="modal-close" id="profile-edit-cancel">Cancel</a>
+            </div>
+        </div>
+    </div>
+
+    <!--Scripts-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.foundation.min.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+
+</html>

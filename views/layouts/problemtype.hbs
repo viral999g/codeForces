@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.foundation.min.css">
+    <link rel="stylesheet" href="css/ProblemSet.css"> 
+    <link rel="stylesheet" href="css/menu.css">
+    <title>{{questiontype}}</title>
+</head>
+
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="nav-logo">Hello Coders!!</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Problem set</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Users</a>
+                </li>
+            </ul>
+            <div class="menulines">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="main">
+        <center>
+            <h1 id="head">Set - {{questiontype}}</h1>
+        </center>
+
+        <section id="table-div" class=TT>
+            <table id="styled-table" class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>PROBLEM</th>
+                        <th>SUBMISSIONS</th>
+                        <th>RATING</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each data}}
+                    <tr>
+                        <td><a target="_blank" href="https://codeforces.com/contest/{{this.contestId}}/problem/{{this.index}}">{{this.name}}</a></td>
+                        <td><a href="/solutions/contestId/{{this.contestId}}/index/{{this.index}}">{{this.submissions.length}}</a></td>
+                        {{#if this.rating}}
+                        <td>{{this.rating}}</td>
+                        {{else}}
+                        <td>N/A</td>
+                        {{/if}}
+                    </tr>
+                    {{/each}}
+            </table>
+
+
+        </section>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.foundation.min.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/ProblemSet.js"></script>
+</body>
+
+</html>

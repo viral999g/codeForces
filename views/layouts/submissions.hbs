@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.foundation.min.css">
+    <link rel="stylesheet" href="/css/ProblemSet.css">
+
+    <link rel="stylesheet" href="/css/menu.css">
+     <title>Solutions</title>
+</head>
+
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="nav-logo">Hello Coders!!</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Problem set</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Users</a>
+                </li>
+            </ul>
+            <div class="menulines">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+    <div class="main" style="height: 100%;" >
+        <center>
+            <h1 id="head">{{question}}</h1>
+        </center>
+
+
+        <section id="table-div" class=TT>
+            <table id="styled-table" class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>USER</th>
+                        <th>SOLUTION LINK</th>
+                        <th>TIME</th>
+                        <th>MEMORY</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each data}}
+                    <tr>
+                        <td><a href="/profile/{{this.user.handle}}">{{this.user.firstName}} {{this.user.lastName}}</a></td>
+                        <td><a target="_blank" href="https://codeforces.com/contest/{{this.contestId}}/submission/{{this.id}}">Link</a></td>
+                        <td>{{this.timeConsumedMillis}} ms</td>
+                        <td>{{this.memoryConsumedBytes}} KB</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.foundation.min.js"></script>
+    <script src="/js/menu.js"></script>
+    <script src="/js/ProblemSolver.js"></script>
+</body>
+
+</html>

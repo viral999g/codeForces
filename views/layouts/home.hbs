@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.foundation.min.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/leader.css">
+    <link rel="stylesheet" href="css/card.css">
+    <title>Coders|homepage</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="nav-logo">Hello Coders!!</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Problem set</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Users</a>
+                </li>
+            </ul>
+            <div class="menulines">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="cards-list">
+
+            <div class="card 1">
+                <div class="card_image"> <img
+                        src="https://cdn.dribbble.com/users/2401141/screenshots/5487982/developers-gif-showcase.gif" />
+                </div>
+                <div class="card_title1 ">
+                    <p>Total Users: {{usercount}}</p>
+                </div>
+            </div>
+
+            <div class="card 2">
+                <div class="card_image">
+                    <img src="https://miro.medium.com/max/1600/0*K2WLMTExLyida7OR.gif" />
+                </div>
+                <div class="card_title2 ">
+                    <p>Total Problems:{{problemcount}}</p>
+                </div>
+            </div>
+
+            <div class="card 3">
+                <div class="card_image">
+                    <img src="https://www.mygo.ge/uploads/blog/1584024060.jpg" />
+                </div>
+                <div class="card_title3 ">
+                    <p>Problem set:{{probsetcount}}</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="leaderboard-box">
+            <div class="titletable"> <img src="./images/leaderbar.png" alt="leaderbar" height="3%" width="3%">
+                <p>LEADERBOARD</p>
+            </div>
+            <table id="styled-table" class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>RATING</th>
+                        <th>NAME</th>
+                        <th>CODEFORCE ID</th>
+                        <th>CODEFORCE RATING</th>
+                        <th>TOTAL SUBMISSIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each users}}
+                    <tr>
+                        <td>{{this.firstName}} {{this.lastName}}</td>
+                        <td class="leaderboard-name-col"><img src={{this.profileImg}} class="leaderboard-image">{{this.firstName}}</td>
+                        <td>{{this.handle}}</td>
+                        <td>{{this.maxRatings}}</td>
+                        <td>{{this.subCounts}}</td>
+                    </tr>
+                    {{/each}}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.foundation.min.js"></script>
+<script src="/js/menu.js"></script>
+<script src="/js/rating.js"></script>
+
+</html>

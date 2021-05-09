@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+.main {
+    background-color: #1c3faa;
+    font-family: Roboto;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.TT {
+    width: 80%;
+    align-content: center;
+    height: auto;
+}
+
+#head {
+    font-family: Roboto;
+    align-content: center;
+}
+
+#table-div {
+    width: 100%;
+    padding: 1%;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 0.5em;
+    align-self: center;
+    margin: 3%;
+    box-shadow: 4px 4px 10px 3px rgba(0, 0, 0, 0.5), -3px -3px 10px 3px rgba(0, 0, 0, 0.5);
+}
+
+#styled-table {
+    background-color: white;
+    border-collapse: collapse;
+    font-family: Roboto;
+    margin-left: 13%;
+    width: 100%;
+    text-align: center;
+    font-size: 1.6em;
+    border: none;
+}
+
+#styled-table tr td:first-child,
+#styled-table tr th:first-child {
+    text-align: left;
+}
+
+#styled-table>thead>tr>th,
+#styled-table>tbody>tr>td {
+    padding: 1%;
+    border: none;
+}
+
+#styled-table thead {
+    border-top: 1px solid rgba(226, 232, 240, 1);
+    border-bottom: 1px solid rgba(226, 232, 240, 1);
+}
+
+#styled-table>thead>tr>th {
+    text-align: center;
+}
+
+#styled-table tbody tr:nth-child(even) {
+    background-color: rgba(226, 232, 240, 0.8);
+}
+
+.row.grid-x {
+    font-size: 1.3em;
+}
+
+.row.grid-x ul li {
+    font-size: 1.2em;
+}
+
+.row.grid-x label {
+    font-size: 1.2em;
+}
+
+.row.grid-x #styled-table_filter label {
+    font-size: 1.1em;
+}

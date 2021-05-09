@@ -1,0 +1,104 @@
+.cards-list {
+    z-index: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+   flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .card{
+  /*margin: 50px auto;*/
+  /* margin: 50px 77px 50px 77px;*/
+  
+  margin:4% 1.6% 4% 1.6%;
+    width: 30%;
+    height: 30%;
+    background-color: transparent;
+    border: 0px;
+    /*background-color:red;
+    border-color: #1C3FAA;*/
+    border-radius: 40px;
+  /*box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);*/
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  
+  .card .card_image {
+    width: auto;
+    height: auto;
+    margin:auto;
+    border-radius: 40px;
+    /*opacity:1;*/
+  }
+  
+  .card .card_image img {
+    width: inherit;
+    height: inherit;
+    border-radius: 40px;
+    object-fit: cover;
+  }
+  
+  .card .card_title1, .card_title2,.card_title3 {
+   
+    text-align: center;
+    border-radius: 0px 0px 40px 40px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1.5vw;
+    height: 40px;
+  }
+  .card_title1{
+    margin: -10% 5% 0% 7%;
+  }
+  .card_title2{
+    margin: -10% 5% 0% 7%;
+  }
+  .card_title3{
+    margin: -10% 5% 0% 7%;
+  }
+  
+  .card:hover {
+    transform: scale(0.9, 0.9);
+    box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+      -5px -5px 30px 15px rgba(0,0,0,0.22);
+  }
+  
+  /*.title-white {
+    color: white;
+  }
+  
+  .title-black {
+    color: black;
+  }*/
+  
+  @media only screen and (max-width: 500px) {
+    .card-list {
+      /* On small screens, we are no longer using row direction but column */
+      flex-direction: column;
+      flex-wrap: nowrap;
+      height: max-content;
+      width: 50%;
+      margin: 10%;
+    }
+    .card{
+      width:50%;
+      margin: 15%;
+      margin-top: 2%;
+      margin-bottom: 1%;
+    }
+    .card .card_title1, .card_title2,.card_title3 {
+      font-size:5vw;
+    }
+  }
+
+
+
+ /* @media all and (max-width: 400px) {
+    .card{
+      height: 20em;
+      width: 20em;
+      margin: 50px 85px 50px 85px;
+    }
+  }*/
+  

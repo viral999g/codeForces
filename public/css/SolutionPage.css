@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.main
+{
+background-color: #1C3FAA;
+font-family: Roboto;
+display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+.TT
+{
+    font-family: Roboto;
+
+    width: 80%;
+    align-content: center;
+    height: auto;
+}
+
+#profile-info{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width:80%;
+    height:auto;
+    padding:2%;
+    justify-content:space-around;
+    height:50%;
+    justify-self: center;
+    margin:2%;
+}
+
+#profile-imagecard{
+    display:flex;
+    flex-direction: column;
+    border-radius: .25rem;
+    text-align:center;
+    background-color: rgba(255,255,255,0.9);
+    font-size: 1.9em;
+    width:30%;
+    height:100%;
+    padding: 2%;
+    box-shadow: 4px 4px 10px 3px rgba(0,0,0,.5), -3px -3px 10px 3px rgba(0,0,0,.5);
+}
+#profile-imagecard img{
+    border-radius: 50%;
+    height:50%;
+    width:50%;
+    margin:auto;
+}
+
+#profile-imagecard > div> span{
+    color:#1a202cc2;
+}
+#profile-imagecard  h3{
+    margin:0%;
+    margin-top:5%;
+    font-weight: bolder;
+    font-family: Roboto;
+    font-size: 1.1em;
+}
+#profile-infocard{
+    display:flex;
+    flex-direction: column;
+    background-color: rgba(255,255,255,0.9);
+    font-size: 1.9em;
+    width:60%;
+    height: max-content;
+    text-align: left;
+    border-radius: .25rem;
+    box-shadow: 4px 4px 10px 3px rgba(0,0,0,.5), -3px -3px 10px 3px rgba(0,0,0,.5);
+}
+
+#profile-infocard > div{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    padding:4%;
+    border-bottom: 1px solid rgba(0,0,0,.125);  
+}
+
+#profile-infocard > div > span{
+    color:#1a202cc2; 
+}
+
+
+
+@media only screen and (max-width: 700px) {
+    #profile-info{
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin:1%;
+    }
+    #profile-infocard{
+        margin-top:3%;
+    }
+    #profile-infocard > div{
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    #profile-infocard{
+        width:99%;
+    }
+
+    #profile-imagecard{
+        flex-direction: row;
+        width:99%;
+        align-items: center;
+        justify-content:left;
+        font-size: 1.7em;
+        height: auto;
+    }
+    #profile-imagecard img{
+        height:30%;
+        width:30%;
+    }
+    #profile-infocard{
+        font-size:1.7em;
+    }
+    #styled-table{
+        font-size:1.7em;
+    }
+}
+
+@media only screen and (max-width: 400px){
+    #profile-imagecard{
+        font-size: 1.3em;
+    }
+    #profile-infocard{
+        font-size:1.3em;
+    }
+    #styled-table{
+        font-size:1.3em;
+    }
+}
+   
+.text_area_editor {
+    background-color: #141414 !important  ;
+    color: #fdee73  !important;
+    font-family: "Lucida Console", "Courier New",     monospace;
+    border-width: 10px;
+  
+   margin: 10px;
+    padding: 20px;
+    border-radius: 1px;
+    font-size: 18px;
+}
+

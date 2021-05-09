@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+   /* font-size: 20px;*/
+    scrollbar-color: transparent transparent; /* thumb and track color */
+    scrollbar-width: 0px;
+    outline-style: none;
+}
+*::-webkit-scrollbar {
+    width: 0;
+  }
+
+*::-webkit-scrollbar-track {
+background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+background: transparent;
+border: none;
+}
+body{
+    font-family: Roboto;
+}
+.container{
+    background-color: #1C3FAA;
+}
+#leaderboard-box p{
+    font-size: 2vw;
+    position: relative;
+    font-family: Roboto;
+   
+    margin :0px;
+   
+    
+}
+#leaderboard-box img{
+    position: relative;
+   margin-right: 15px;
+    
+}
+.titletable{
+    display: flex;
+    flex-direction: row;
+    align-items:baseline;
+    justify-content: flex-start;
+    margin-bottom: 1%;
+}
+#leaderboard-box{
+   
+    margin:0%;
+    margin-left: 5%;
+    margin-right: 5%;
+   
+    width: auto;  
+    background-color:/*rgba(231, 243, 241, 1)*/#eeeeee;
+    padding:3%;
+    /*border-top-left-radius:30px;
+    border-top-right-radius: 30px;*/
+    border-radius: 4%;
+   /* box-shadow: 1px 1px 10px 0.2px grey, -1px -1px 10px 0.2px grey;*/
+}
+.leaderboard-image{
+    display: inline;
+    height:2.5em;
+    width:2.5em;
+    margin: 3%;
+    padding: 0%;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+.leaderboard-name-col{
+    text-align: left;
+    padding-left: 5%;
+}
+#styled-table{
+    background-color: white;
+    border-radius: 10px;
+    border-collapse: collapse;
+    font-family: Roboto;
+    width:100%;
+    text-align: center;
+    
+    font-size: 1.5vw;
+}
+
+#styled-table tr td:first-child,#styled-table tr th:first-child{
+    text-align: left;
+}
+
+#styled-table td,th{
+    padding:2%;
+}
+
+#styled-table tbody tr:nth-child(even){
+    background-color: rgba(226,232,240,0.8);
+}
+#styled-table thead{
+    border-top:1px solid rgba(226,232,240,1);
+    border-bottom:1px solid rgba(226,232,240,1);
+}
+.row.grid-x{
+    font-size: 1.3vw;
+}
+.row.grid-x ul li{
+    font-size: 1.2vw;
+}
+.row.grid-x label{
+    font-size: 1.2vw;
+}
+.row.grid-x #styled-table_filter label{
+    font-size: 1.1vw;
+}
+
+/*responsive*/
+@media only screen and (max-width:700px)
+{
+/*.titletable img{
+    height: 5%;
+    width: 5%;
+}*/
+
+}
+@media only screen and (max-width:500px)
+{
+
+/*.titletable img{
+    height: 5%;
+    width: 5%;
+}*/
+
+}
