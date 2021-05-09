@@ -1,0 +1,62 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/register.css">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@1,500&family=Newsreader:ital,wght@1,300&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="cont_principal">
+        <div class="title_sans">
+            <h1>CodeForces</h1>
+            <h3>Welcome Coders!</h3>
+        </div>
+
+        <div class="cont_centrar">
+            <div class="cont_login">
+                <form onsubmit="return false;">
+                    <div class="cont_tabs_login">
+                        <ul class='ul_tabs'>
+                            <li class="active"><a href="#">SIGN UP</a>
+                                <span class="linea_bajo_nom"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="cont_text_inputs">
+                        <input id="fname" type="text" class="input_form_sign d_block active_inp  " placeholder="FIRST NAME" name="name_us" required />
+                        <input id="lname" type="text" class="input_form_sign d_block active_inp  " placeholder="LAST NAME"
+                            name="name_us" required />
+                        <input id="email" type="email" class="input_form_sign d_block active_inp  " placeholder="EMAIL"
+                            name="pass_us" required />
+                        <span id="email_err"></span>
+                        <input id="cf_handle" type="text" class="input_form_sign d_block active_inp  "
+                            placeholder="CODEFORCE HANDLE" name="cf_handle" required />
+                        <input id="password" type="password" class="input_form_sign d_block active_inp" min="3" max="12"
+                            placeholder="PASSWORD" name="pass_us" required />
+                        <span id="pass_err"></span>
+                        <input id="cpassword" type="password" class="input_form_sign d_block active_inp" min="3"
+                            max="12" placeholder="CONFIRM PASSWORD" name="cpass_us" required />
+                        <span id="cpass_err"></span>
+                    </div>
+                    <div class="cont_btn">
+                        <button id="sign_up" type="submit" class="btn_sign" name="reset">SIGN UP</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="/js/register.js"></script>
+
+</body>
+
+</html>

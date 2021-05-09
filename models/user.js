@@ -8,11 +8,9 @@ const userSchema = new Schema({
     },
     firstName: {
         type: String,
-        required: true
     },
     lastName: {
         type: String,
-        required: true
     },
     submissions: {
         items: [{
@@ -28,6 +26,7 @@ const userSchema = new Schema({
     rank: String,
     maxRank: String,
     profileImg: String,
+    subCounts: Number
 });
 
 module.exports = mongoose.model('User', userSchema);

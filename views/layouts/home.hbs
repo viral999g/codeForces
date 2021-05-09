@@ -43,7 +43,7 @@
                         src="https://cdn.dribbble.com/users/2401141/screenshots/5487982/developers-gif-showcase.gif" />
                 </div>
                 <div class="card_title1 ">
-                    <p>Total Users: {{usercount}}</p>
+                    <p>Total Users : {{users.length}}</p>
                 </div>
             </div>
 
@@ -52,7 +52,7 @@
                     <img src="https://miro.medium.com/max/1600/0*K2WLMTExLyida7OR.gif" />
                 </div>
                 <div class="card_title2 ">
-                    <p>Total Problems:{{problemcount}}</p>
+                    <p>Total Problems : {{probCount}}</p>
                 </div>
             </div>
 
@@ -61,7 +61,7 @@
                     <img src="https://www.mygo.ge/uploads/blog/1584024060.jpg" />
                 </div>
                 <div class="card_title3 ">
-                    <p>Problem set:{{probsetcount}}</p>
+                    <p>Problem set : {{tagCount}}</p>
                 </div>
             </div>
 
@@ -74,7 +74,6 @@
             <table id="styled-table" class="ui celled table">
                 <thead>
                     <tr>
-                        <th>RATING</th>
                         <th>NAME</th>
                         <th>CODEFORCE ID</th>
                         <th>CODEFORCE RATING</th>
@@ -84,8 +83,7 @@
                 <tbody>
                     {{#each users}}
                     <tr>
-                        <td>{{this.firstName}} {{this.lastName}}</td>
-                        <td class="leaderboard-name-col"><img src={{this.profileImg}} class="leaderboard-image">{{this.firstName}}</td>
+                        <td class="leaderboard-name-col"><img src={{this.profileImg}} class="leaderboard-image"><a href="/profile/{{this.handle}}">{{this.firstName}} {{this.lastName}}</a></td>
                         <td>{{this.handle}}</td>
                         <td>{{this.maxRatings}}</td>
                         <td>{{this.subCounts}}</td>

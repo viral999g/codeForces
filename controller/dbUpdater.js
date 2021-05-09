@@ -82,7 +82,6 @@ const getSubmissions = async(handle) => {
                                 addProblem(subDoc)
                                 return
                             }
-                            console.log(user)
 
                             var s = new subModel({
                                     id: sub_id,

@@ -3,6 +3,7 @@ const dbUpdater = require('./dbUpdater')
 const userModel = require('../models/user')
 const subModel = require('../models/submission')
 const tagModel = require('../models/tag')
+const probModel = require('../models/problem')
 
 exports.getProfileInfo = (req, res, next) => {
     var handle = req.params.handle
@@ -89,22 +90,35 @@ exports.getSolutions = async(req, res, next) => {
 }
 
 exports.getUsers = async(req, res, next) => {
+    var probCount = 0
+    var tagCount = 0
+    probModel.distinct('name')
+        .then(docs => {
+            probCount = docs.length
+        })
+
+    tagModel.distinct('name')
+        .then(docs => {
+            tagCount = docs.length
+        })
+
     userModel
         .find()
-        .then(async users => {
-            await users.forEach(async(user, index) => {
-                subModel.countDocuments({ user: user._id })
-                    .exec((err, count) => {
-                        users[index].subCounts = count
-                    });
-            })
-            console.log(users)
-            return users
-        })
         .then(users => {
-            console.log(users)
-            res.render('home', {
-                users: users
+            const results = users.map(async user => {
+                user = user.toJSON()
+                var subs = await subModel.find({ user: user._id })
+                user.subCounts = subs.length
+                return user
+            })
+            Promise.all(results).then(r => {
+                console.log(results)
+                console.log(r)
+                res.render('home', {
+                    users: r,
+                    probCount: probCount,
+                    tagCount: tagCount
+                })
             })
         })
 }

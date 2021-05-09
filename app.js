@@ -3,7 +3,6 @@ const app = express()
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
-const expressHbs = require('express-handlebars');
 
 const path = require('path')
 const constants = require('./utils/constants')

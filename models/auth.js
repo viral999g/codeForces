@@ -14,7 +14,11 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    name: {
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
         type: String,
         required: true
     },
@@ -28,4 +32,4 @@ const userSchema = new Schema({
     verified: Boolean
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Auth', userSchema);

@@ -86,11 +86,12 @@
     padding: 30px;
     display: block;
     transition: all 0.5s;
+    padding-right: -23vw;
 }
 
 .ul_tabs>.active>a {
     color: #193897;
-    padding-left: 18vw;
+    padding-left: 16vw;
     white-space: nowrap;
 }
 
@@ -157,12 +158,6 @@
     transition: all 0.5s;
 }
 
-.reg {
-    text-align: center;
-    padding-left: 0.5vw;
-    padding-bottom: 1vh;
-}
-
 .cont_btn {
     position: relative;
     float: left;
@@ -209,18 +204,14 @@
     transition-delay: 0.8s;
 }
 
-@media only screen and (max-width: 375px) {
-    .cont_principal {
-        position: absolute;
-        width: 90%;
-        height: 130%;
-        /* Rectangle 3: */
-        background-image: linear-gradient(-87deg, #1C3FAA 0%, #18368f 100%);
-    }
+@media only screen and (max-width:425px) {
     .ul_tabs>.active>a {
         color: #193897;
-        padding-left: 15vw;
+        padding-left: 20vw;
         white-space: nowrap;
+    }
+    #SIGN_UP {
+        left: 20vw;
     }
     .title_sans {
         padding-top: 4vh;
@@ -235,16 +226,16 @@
     }
     .cont_centrar {
         position: absolute;
-        width: 200px;
-        left: 40%;
+        width: 250px;
+        left: 50%;
         top: 50%;
-        margin-left: -100px;
+        margin-left: -140px;
         margin-top: -270px;
     }
     .cont_centrar {
         position: relative;
-        width: 200px;
-        float: center;
+        width: 260px;
+        float: left;
         background-image: linear-gradient(-226deg, #FFFFFF 8%, #EEF3F5 100%);
         border-radius: 8px;
         transition: all 0.5s;
@@ -257,18 +248,10 @@
     }
 }
 
-@media only screen and (max-width:1024px) {
-    .ul_tabs>.active>a {
-        color: #193897;
-        padding-left: 30vw;
-        white-space: nowrap;
-    }
-}
-
 @media only screen and (max-width:768px) {
     .ul_tabs>.active>a {
         color: #193897;
-        padding-left: 19vw;
+        padding-left: 12vw;
         white-space: nowrap;
     }
     #SEND_MAIL {
