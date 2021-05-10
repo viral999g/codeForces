@@ -1,4 +1,3 @@
-const constants = require('../utils/constants')
 const dbUpdater = require('./dbUpdater')
 const userModel = require('../models/user')
 const subModel = require('../models/submission')
@@ -33,21 +32,23 @@ exports.getProfileInfo = (req, res, next) => {
 
 exports.getProblemSet = (req, res, next) => {
     tagModel.distinct("name", function(error, r) {
-        var data = []
-        r.forEach(element => {
-            tagModel
+        var data = r.map(element => {
+            return tagModel
                 .findOne({ name: element })
                 .then(doc => {
                     if (doc) {
                         data.push(doc)
                     }
-                    return
+                    return doc
                 })
         });
 
-        res.render('problemsets', {
-            tags: data
+        Promise.all(data).then(r => {
+            res.render('problemsets', {
+                tags: r
+            })
         })
+
     })
 }
 
@@ -112,8 +113,6 @@ exports.getUsers = async(req, res, next) => {
                 return user
             })
             Promise.all(results).then(r => {
-                console.log(results)
-                console.log(r)
                 res.render('home', {
                     users: r,
                     probCount: probCount,

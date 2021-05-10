@@ -5,26 +5,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.foundation.min.css">
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/menu.css">
+    <title>{{userInfo.handle}} | Profile</title>
 </head>
 
 <body>
     <header class="header">
         <nav class="navbar">
-            <a href="#" class="nav-logo">Hello Coders!!</a>
+            <a href="/" class="nav-logo">Hello Coders!!</a>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Profile</a>
+                    <a href="/myProfile" class="nav-link">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Problem set</a>
+                    <a href="/problemsets" class="nav-link">Problem set</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Users</a>
+                    <a href="" class="nav-link" role="button" onclick="logout(event)">Logout</a>
                 </li>
             </ul>
             <div class="menulines">
@@ -102,16 +108,19 @@
 
     <!--MODAL-->
     <div id="open-modal">
-        <div id="profile-edit-form">
-            <input type="text" placeholder="{{userInfo.firstName}}" id="profile-edit-fname">
-            <input type="text" placeholder="{{userInfo.lastName}}" id="profile-edit-lname">
-            <input type="text" placeholder="{{userInfo.city}}" id="profile-edit-city">
-            <input type="text" placeholder="{{userInfo.country}}" id="profile-edit-country">
+        <form id="profile-edit-form" onsubmit="return false;">
+            <input type="text" value="{{userInfo.handle}}" id="profile-edit-handle" disabled>
+            <input type="text" value="{{userInfo.firstName}}" id="profile-edit-fname" minlength="2" required>
+            <input type="text" value="{{userInfo.lastName}}" id="profile-edit-lname" required>
+            <input type="text" value="{{userInfo.city}}" id="profile-edit-city">
+            <input type="text" value="{{userInfo.country}}" id="profile-edit-country">
+                
             <div id="profile-edit-buttons">
-                <input type="submit" value="Save" id="profile-edit-submit">
+                <a href="" title="Location" class="modal-close" id="profile-geo" role="button" onclick="updateLocation(event)">Locate</a>
+                <input type="submit" value="Save" id="profile-edit-submit" onclick="updateProfile(event)"> 
                 <a href="#" title="Close" class="modal-close" id="profile-edit-cancel">Cancel</a>
             </div>
-        </div>
+        </form>
     </div>
 
     <!--Scripts-->

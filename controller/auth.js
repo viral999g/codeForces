@@ -1,9 +1,9 @@
-const constants = require('../utils/constants')
 const dbUpdater = require('./dbUpdater')
 const userModel = require('../models/user')
 const authModel = require('../models/auth')
 const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
+const jwt = require('jsonwebtoken');
 
 exports.postRegister = async(req, res, next) => {
     var firstName = req.body.firstName
@@ -64,8 +64,8 @@ const sendRegEmail = async(user) => {
         port: 465,
         secure: true, // true for 465, false for other ports
         auth: {
-            user: constants.EMAIL, // generated ethereal user
-            pass: constants.PASSWD, // generated ethereal password
+            user: process.env.EMAIL, // generated ethereal user
+            pass: process.env.PASSWD, // generated ethereal password
         },
     });
 
@@ -83,6 +83,51 @@ const regUser = async(user) => {
     var handle = user.handle
     var insertUser = await dbUpdater.getUserInfo(handle)
         // var insertSubmissions = dbUpdater.getSubmissions(handle)
+}
+
+exports.postLogin = async(req, res, next) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    console.log(req.body)
+
+    authModel.findOne({ email: email })
+        .then(user => {
+            if (!user) {
+                res.send({ statusCode: 200, message: "Invalid Credentials" })
+            }
+            bcrypt
+                .compare(password, user.password)
+                .then(doMatch => {
+                    if (doMatch) {
+                        const token = jwt.sign({
+                                email: user.email
+                            },
+                            "jwt token", {
+                                expiresIn: '24h'
+                            })
+                        req.session.token = token
+                        return req.session.save(err => {
+                            console.log("Success");
+                            res.send({ statusCode: 200, message: "Logged in!" })
+                        });
+                    }
+                    res.send({ statusCode: 200, message: "Invalid Credentials" })
+                }).catch(err => {
+                    res.send({ statusCode: 200, message: err.message })
+                });
+        })
+        .catch(err => console.log(err));
+};
+
+exports.logoutPost = (req, res, next) => {
+    req.session.destroy(err => {
+        if (err) {
+            console.log(err)
+            res.send({ statusCode: 401, message: err.message })
+        }
+        res.send({ statusCode: 200, message: 'Logged out successfully' })
+    })
 }
 
 exports.regUser = regUser;
