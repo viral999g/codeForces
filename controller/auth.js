@@ -140,6 +140,8 @@ exports.updateProfile = async(req, res, next) => {
     var firstName = req.body.firstName
     var lastName = req.body.lastName
 
+    console.log(req.body)
+
     userModel.findOne({ handle: handle })
         .then(user => {
             user.city = city
@@ -148,7 +150,7 @@ exports.updateProfile = async(req, res, next) => {
             user.lastName = lastName
 
             user.save().then(r => {
-                res.redirect('./myProfile')
+                res.send({ statusCode: 200, message: "Profile updated successfully" })
             })
         })
 

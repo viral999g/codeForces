@@ -95,12 +95,11 @@ const updateLocation = (e) => {
 }
 
 const updateProfile = async(e) => {
-    ele_handle = document.getElementById("profile-edit-handle");
-    ele_city = document.getElementById("profile-edit-city");
-    ele_country = document.getElementById("profile-edit-country");
-    ele_fname = document.getElementById("profile-edit-fname");
-    ele_lname = document.getElementById("profile-edit-lname");
-
+    ele_handle = document.getElementById("profile-edit-handle").value;
+    ele_city = document.getElementById("profile-edit-city").value;
+    ele_country = document.getElementById("profile-edit-country").value;
+    ele_fname = document.getElementById("profile-edit-fname").value;
+    ele_lname = document.getElementById("profile-edit-lname").value;
     var res = await fetch('/updateUser', {
         method: 'post',
         headers: { "Content-Type": "application/json" },
@@ -118,6 +117,7 @@ const updateProfile = async(e) => {
     if (json.statusCode == 200) {
         if (json.message == "Profile Updated") {
             alert("Profile Updated Successfully")
+            window.location.replace('/myProfile')
         } else {
             alert(json.message)
         }

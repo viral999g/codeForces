@@ -6,7 +6,6 @@ const probModel = require('../models/problem')
 
 exports.getProfileInfo = (req, res, next) => {
     var handle = req.params.handle
-    console.log(handle)
     userModel
         .findOne({ handle: new RegExp(`^${handle}$`, 'i') })
         .then(results => {
@@ -21,9 +20,19 @@ exports.getProfileInfo = (req, res, next) => {
                     } else {
                         results.subCounts = 0
                     }
+
+                    var myProfile = false
+                    console.log(req.user.handle)
+                    console.log(data.handle)
+                    if (req.user.handle == results.handle) {
+                        myProfile = true
+                    }
+                    console.log(myProfile)
+
                     res.render('profile', {
                         userInfo: results,
-                        submissions: data
+                        submissions: data,
+                        myProfile: myProfile
                     })
                 }).catch(e => console.log(e))
         })

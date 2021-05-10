@@ -48,11 +48,11 @@
                     <h3>{{userInfo.firstName}} {{userInfo.lastName}}</h3>
                     <span>Rank: {{userInfo.rank}}</span><br>
                     <span>Rating: {{userInfo.maxRatings}}</span>
+                    {{#if myProfile}}
                     <div class="profile-edit-btn-container">
-
                         <a class="profile-edit-btn" href="#open-modal">Edit Profile</a>
-
                     </div>
+                    {{/if}}
                 </div>
             </div>
 
