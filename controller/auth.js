@@ -5,6 +5,9 @@ const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken');
 
+const constants = require('./config/constants')
+
+
 exports.postRegister = async(req, res, next) => {
     var firstName = req.body.firstName
     var lastName = req.body.lastName
@@ -64,8 +67,8 @@ const sendRegEmail = async(user) => {
         port: 465,
         secure: true, // true for 465, false for other ports
         auth: {
-            user: process.env.EMAIL, // generated ethereal user
-            pass: process.env.PASSWD, // generated ethereal password
+            user: constants.EMAIL, // generated ethereal user
+            pass: constants.PASSWD, // generated ethereal password
         },
     });
 

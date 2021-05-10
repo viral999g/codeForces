@@ -4,8 +4,10 @@ const subModel = require('../models/submission')
 const probModel = require('../models/problem')
 const tagModel = require('../models/tag')
 
+const constants = require('./config/constants')
+
 const getUserInfo = async(handle) => {
-    const result = await fetch(`${process.env.CF_BASE_URL}/user.info?handles=${handle}`)
+    const result = await fetch(`${constants.CF_BASE_URL}/user.info?handles=${handle}`)
     const json = await result.json()
     if (json.status = 'OK') {
         if (json.result.length > 0) {
@@ -66,7 +68,7 @@ const getSubmissions = async(handle) => {
     userModel.findOne({ handle: handle })
         .then(async userDoc => {
             while (true) {
-                const api = await fetch(`${process.env.CF_BASE_URL}/user.status?handle=${handle}&from=${sub_counts}&count=1000`)
+                const api = await fetch(`${constants.CF_BASE_URL}/user.status?handle=${handle}&from=${sub_counts}&count=1000`)
                 const res = await api.json()
                 if (res.status = 'OK') {
                     if (res.result.length > 0) {

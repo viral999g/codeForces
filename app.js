@@ -5,6 +5,7 @@ const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 
 const path = require('path')
+const constants = require('./config/constants')
 
 const authRouter = require('./router/auth')
 const auth = require('./controller/auth')
@@ -12,7 +13,7 @@ const profileRouter = require('./router/profile')
 
 const PORT = 8080
 const store = new MongoDBStore({
-    uri: process.env.MONGO_URI,
+    uri: constants.MONGO_URI,
     collection: 'sessions'
 });
 
@@ -44,7 +45,7 @@ app.use('/', (req, res, next) => {
 })
 
 mongoose
-    .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(constants.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
         console.log(`Connected to port ${PORT}`)
         app.listen(process.env.PORT || PORT);
