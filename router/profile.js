@@ -17,4 +17,6 @@ router.get('/myProfile', isAuth.isAuth, (req, res, next) => {
     res.redirect(`/profile/${handle}`)
 })
 
+router.post('/updateUser', isAuth.isAuth, authController.updateProfile)
+
 module.exports = router;

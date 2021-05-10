@@ -94,7 +94,7 @@ const updateLocation = (e) => {
     }
 }
 
-const updateProfile = (e) => {
+const updateProfile = async(e) => {
     ele_handle = document.getElementById("profile-edit-handle");
     ele_city = document.getElementById("profile-edit-city");
     ele_country = document.getElementById("profile-edit-country");

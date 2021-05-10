@@ -133,4 +133,25 @@ exports.logoutPost = (req, res, next) => {
     })
 }
 
+exports.updateProfile = async(req, res, next) => {
+    var handle = req.body.handle
+    var city = req.body.city
+    var country = req.body.country
+    var firstName = req.body.firstName
+    var lastName = req.body.lastName
+
+    userModel.findOne({ handle: handle })
+        .then(user => {
+            user.city = city
+            user.country = country
+            user.firstName = firstName
+            user.lastName = lastName
+
+            user.save().then(r => {
+                res.redirect('./myProfile')
+            })
+        })
+
+}
+
 exports.regUser = regUser;
