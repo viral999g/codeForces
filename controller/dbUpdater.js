@@ -4,7 +4,7 @@ const subModel = require('../models/submission')
 const probModel = require('../models/problem')
 const tagModel = require('../models/tag')
 
-const constants = require('./config/constants')
+const constants = require('../config/constants')
 
 const getUserInfo = async(handle) => {
     const result = await fetch(`${constants.CF_BASE_URL}/user.info?handles=${handle}`)

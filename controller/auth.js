@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken');
 
-const constants = require('./config/constants')
+const constants = require('../config/constants')
 
 
 exports.postRegister = async(req, res, next) => {
